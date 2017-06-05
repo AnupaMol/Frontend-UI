@@ -1,0 +1,160 @@
+<!--
+<html>
+    
+    <head>  
+        <title> prod_desc </title>
+        <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <link rel= "stylesheet" type= "text/css" href= "css/style.css">
+        
+    </head>
+    <body ng-app="">
+    <div ng-include="'/Users/coviam/Desktop/prodDesc/include/header.html'"></div>
+
+    <div ui-view=""></div>  
+
+
+    <div ng-include="'include/footer.html'"></div>
+
+    </body>
+    
+</html>-->
+
+<!DOCTYPE html>
+  <html>
+    <head>
+        <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="/Users/coviam/Desktop/prodDesc/css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="/Users/coviam/Desktop/prodDesc/css/style.css"/>
+      <link type="text/css" rel="stylesheet" href="/Users/coviam/Desktop/prodDesc/mag/drift-basic.min.css"/>
+        <link type= "text/css" rel= "stylesheet" href="/Users/coviam/Desktop/prodDesc/css/styleprodDesc.css">
+        
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body ng-app="" ng-controller="">
+    <div class="navbar-fixed">    
+        <nav class="white">
+
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">Ecommerce</a>  
+              
+                <ul class="hide-on-med-and-down right">               
+                    <li>    
+                       <div class="center row">
+                          <div class="col s12 " >
+                            <div class="row" id="topbarsearch">
+                              <div class="input-field col s6 s12 bcolor">
+                                <i class="b-text material-icons prefix">search</i>
+                                <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete b-text" >
+                                </div>
+                              </div>
+                            </div>
+                          </div>          
+                      </li>                     
+                    
+                    <li><a class="dropdown-button b-text" href="#!" data-activates="dropdown" data-beloworigin="true" ><i class="material-icons">shopping_cart</i> </a></li>
+                    <li><a class="b-text modal-trigger" href="#modal1"><i class="material-icons">view_list</i> </a></li>
+                </ul>
+                <ul id="dropdown" class="dropdown-content collection">
+                    <li class="collection-item avatar">
+                        <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+                        <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                    </li>
+                </ul>
+            </div>
+          </nav>     
+    </div>
+    <div id="modal1" class="modal">
+                  <div class="modal-content">
+                    <h4>Orders</h4>
+                    <p>Enter yout email to view your orders</p>
+                    <br>
+                    <form >
+                    <div class="input-field">
+                    <input id="email" type="email" class="validate">
+                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                    </div>
+                    <button class="waves-effect waves-light btn" type="submit">button</button>
+                    </form>
+                  </div>
+    </div>
+                <div class="row" style="width:100%" >
+            <div class="col s3 m3 offset-m2">
+            <img src="/Users/coviam/Desktop/prodDesc/apple.jpeg" width="70%" height="50%" class="myimg"><br/>
+            <select style="width:20px;">
+              <option value="" disabled selected>Quantity</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+                <p>Stock</p>
+            <button class = "atcart" type = "submit" ng-click = ""> Add to cart </button>
+            
+            </div>
+            
+            <div class="col s5 m5 offset-s2 offset-m2">
+                <h5>Product name</h5><br/>
+                Rating<br/>
+                Sold by<br/>
+                <p>USP</p>
+                <p>Attributes</p>
+                <p>Description</p>
+                <p>Reviews and rating by customers</p>
+                
+                
+            
+            </div>
+            
+            <div class="merchants"></div>
+            
+        </div>
+
+        <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Ecommerce Logo</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>   
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="/Users/coviam/Desktop/prodDesc/js/materialize.min.js"></script>
+      <script type="text/javascript" src="/Users/coviam/Desktop/prodDesc/js/style.js"></script>
+      <script>
+            $(document).ready(function(){                 
+                $('input.autocomplete').autocomplete({
+                data: {
+                    "Apple": null,
+                    "Microsoft": null,
+                    "Google": null,
+                    "Gargle":null
+                }
+                }); 
+                $('select').material_select();               
+                });
+      </script> 
+        
+</body>
+</html>
