@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+
+      <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+  <link rel="stylesheet" href="css/style1.css"> <!-- Resource style -->
+  <script src="js/modernizr.js"></script> <!-- Modernizr -->
+    
+      <!--Let browser know website is optimized for mobile-->
+ 
+
+
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+       
+    </head>
+
+    <body>
+     
+     
+    </head>
+    <body>     
+ 
+ 
+
+
+
+    <div class="navbar-fixed">    
+        <nav class="white">
+         
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">Ecommerce</a>  
+              
+                <ul class="hide-on-med-and-down right">   
+                 <li><a class="cd-dropdown-trigger" href="#0"><i class="material-icons">view_list</i></a></li>            
+                    <li>    
+                       <div class="center row">
+                          <div class="col s12 " >
+                            <div class="row" id="topbarsearch">
+                              <div class="input-field col s6 s12 bcolor">
+                              
+                                <i class="b-text material-icons prefix">search</i>
+                                <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete b-text" >
+                                </div>
+                              </div>
+                            </div>
+                          </div>          
+                      </li>                     
+                   
+                    <li><a class="dropdown-button b-text" href="#!" data-activates="dropdown" data-beloworigin="true" ><i class="material-icons">shopping_cart</i> </a></li>
+                    <li><a class="b-text modal-trigger" href="#modal1"><i class="material-icons">view_list</i> </a></li>
+                    
+                </ul>
+                <ul id="dropdown" class="dropdown-content collection">
+                    <li class="collection-item avatar">
+                        <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+                        <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                        
+                     
+                    </li>
+                </ul>
+
+                
+
+            </div>
+          </nav>     
+</div>
+<div id="modal1" class="modal">
+                  <div class="modal-content">
+                    <h4>Orders</h4>
+                    <p>Enter yout email to view your orders</p>
+                    <br>
+                    <form >
+                    <div class="input-field">
+                    <input id="email" type="email" class="validate">
+                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                    </div>
+                    <button class="waves-effect waves-light btn" type="submit">button</button>
+                    </form>
+                  </div>
+                  
+                </div>
+
+
+
+<div class="container" style="margin-top:77px;">
+  <div class="row">
+         <div class="col m4">
+         <h4> My Orders</h4>
+          <p> Nihal Gurjar </p> <!-- user email -->
+          </div>
+    </div>
+                  
+                    <hr>
+                  
+                    <br> 
+
+
+
+
+<!-- for loop -->
+
+    
+    
+      <div class="row">
+                <div class="col m11" style="box-shadow: 0 7px 17px 0 rgba(23,84,116,0.18); height:37em;width:64em;background-color: #bdbdbd; ">
+
+          <!--      
+                  @if(order.status()!=3)         
+      @if(order.status()==2)
+        <p> <b> Delivered</b></p>
+        <p><a class="btn waves-effect" href="/userorders/invoice/{{$order->id}}">Invoice</a></p>
+      @else
+        <p> <b> Processed</b></p>
+        <p><a class="btn waves-effect" href="/userorder/cancel/{{$order->id}}">Cancel order</a></p>
+      @endif
+      @elseif(order.status()==3)
+        <p> <b> Cancelled</b></p>
+       @endif  -->
+
+
+
+
+                   <p> Order No: 1122</p>
+                 <p>  Placed on  date 2/3/2013 / Rs. 343224/ 3 items</p>
+                 <hr>
+                 <div class="col s12 m6 ">
+            		<div class="card horizontal" style="height:200px;">
+		              <div class="card-image">
+		                <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="height:200px;">
+		              </div>
+		              <div class="card-stacked">
+		                <div class="card-content">
+		                  <p>Iphone 6s 64GB White</p>
+		                  <p>Seller : E-mobiles</p>
+		                  <p>Price : 26000</p>
+		                  <p>Quantity : 1 </p>
+		                  <p>Delivered</p>
+		                </div>
+		                <div class="card-action">
+		                  <a href="#">Give Feedback</a>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+
+		          <div class="col s12 m6 ">
+            		<div class="card horizontal" style="height:200px;">
+		              <div class="card-image">
+		                <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="height:200px;">
+		              </div>
+		              <div class="card-stacked">
+		                <div class="card-content">
+		                  <p>Iphone 6s 64GB White</p>
+		                  <p>Seller : E-mobiles</p>
+		                  <p>Price : 26000</p>
+		                  <p>Quantity : 1 </p>
+		                  <p>Delivered</p>
+		                </div>
+		                <div class="card-action">
+		                  <a href="#">Give Feedback</a>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col s12 m6 ">
+            		<div class="card horizontal" style="height:200px;">
+		              <div class="card-image">
+		                <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="height:200px;">
+		              </div>
+		              <div class="card-stacked">
+		                <div class="card-content">
+		                  <p>Iphone 6s 64GB White</p>
+		                  <p>Seller : E-mobiles</p>
+		                  <p>Price : 26000</p>
+		                  <p>Quantity : 1 </p>
+		                  <p>Delivered</p>
+		                </div>
+		                <div class="card-action">
+		                  <a href="#">Give Feedback</a>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col s12 m6 ">
+            		<div class="card horizontal" style="height:200px;">
+		              <div class="card-image">
+		                <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="height:200px;">
+		              </div>
+		              <div class="card-stacked">
+		                <div class="card-content">
+		                  <p>Iphone 6s 64GB White</p>
+		                  <p>Seller : E-mobiles</p>
+		                  <p>Price : 26000</p>
+		                  <p>Quantity : 1 </p>
+		                  <p>Delivered</p>
+		                </div>
+		                <div class="card-action">
+		                  <a href="#">Give Feedback</a>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+
+
+
+  
+      
+
+           
+        
+            </div> 
+            </div>   
+
+  <!-- @endforeach -->
+  
+</div>
+
+
+
+  <div style="height:100px">
+
+
+</div>
+
+
+
+
+
+
+
+          <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Ecommerce Logo</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>   
+       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/style.js"></script>
+      <script src="js/jquery.menu-aim.js"></script> <!-- menu aim -->
+<script src="js/main.js"></script> 
+
+        <script src="js/modernizr.js"></script> 
+      <script>
+            $(document).ready(function(){                 
+                $('input.autocomplete').autocomplete({
+                data: {
+                    "Apple": null,
+                    "Microsoft": null,
+                    "Google": null,
+                    "Gargle":null
+                }
+                });                
+                });
+      </script>    
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
