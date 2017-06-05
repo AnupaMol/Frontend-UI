@@ -8,7 +8,40 @@
       <link type="text/css" rel="stylesheet" href="css/style.css"/>
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-       
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+       <script>
+        var app = angular.module("myShoppingCart", []); 
+        app.controller("CartCtrl", function($scope,$http) {
+            
+            $scope.xx=[{
+              "price":20,
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "name":"kuchbi" ,
+              "seller":"emobile",
+              "quantity":2, 
+              "total":40
+            },
+            {
+              "price":20,
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "name":"goodone" ,
+              "seller":"emobile3erwer",
+              "quantity":333, 
+              "total":342
+            },
+            {
+              "price":22,
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "name":"oneplus3t" ,
+              "seller":"jo band ho gya",
+              "quantity":2, 
+              "total":40
+            }];
+            // $http.get('http://localhost:8080/getprod').then(function (response) {
+            //     $scope.content = response;
+            // });
+        });
+</script>
     </head>
 
     <body>
@@ -74,7 +107,7 @@
 
 <div class="container" style="margin-top:77px;">
 	<h4>Your cart</h4>
-	<table class="table striped">
+	<table class="table striped" ng-app="myShoppingCart" ng-controller="CartCtrl">
 	<tr>
 	<td>Product</td>
   <td>Name</td>
@@ -85,9 +118,9 @@
 	</tr>
 
 	<!-- For loop start -->
-	<tr>
-  <td><img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="width:auto;height:110px;"></td>
-	<td>Name</td>
+	<tr ng-repeat="x in xx">
+  <td><img src="{{x.image}}" style="width:auto;height:110px;"></td>
+	<td>{{x.name}}</td>
 	<td><select>
       <option value="" disabled selected>Quantity</option>
       <option value="1">1</option>
@@ -95,77 +128,14 @@
       <option value="3">3</option>
     </select>
 </td>
-	<td>price</td>
-	<td>Total</td>
-	<td><a href="/cart/delete/{{$cart_item->id}}">Delete</a>
+	<td>{{x.price}}</td>
+	<td>{{x.total}}</td>
+	<td><a href="/cart/delete/">Delete</a>
 	
 	</td>
 	</tr>
 
-	<tr>
-  <td><img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="width:auto;height:110px;"></td>
-	<td>Name</td>
-	<td><select>
-      <option value="" disabled selected>Quantity</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-    </select>
-</td>
-	<td>price</td>
-	<td>Total</td>
-	<td><a href="/cart/delete/{{$cart_item->id}}">Delete</a>
 	
-	</td>
-	</tr>
-	<tr>
-  <td><img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="width:auto;height:110px;"></td>
-	<td>Name</td>
-	<td><select>
-      <option value="" disabled selected>Quantity</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-    </select>
-</td>
-	<td>price</td>
-	<td>Total</td>
-	<td><a href="/cart/delete/{{$cart_item->id}}">Delete</a>
-	
-	</td>
-	</tr>
-	<tr>
-  <td><img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="width:auto;height:110px;"></td>
-	<td>Name</td>
-	<td><select>
-      <option value="" disabled selected>Quantity</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-    </select>
-</td>
-	<td>price</td>
-	<td>Total</td>
-	<td><a href="/cart/delete/{{$cart_item->id}}">Delete</a>
-	
-	</td>
-	</tr>
-	<tr>
-  <td><img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="width:auto;height:110px;"></td>
-	<td>Name</td>
-	<td><select>
-      <option value="" disabled selected>Quantity</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-    </select>
-</td>
-	<td>price</td>
-	<td>Total</td>
-	<td><a href="/cart/delete/{{$cart_item->id}}">Delete</a>
-	
-	</td>
-	</tr>
 
 
 
@@ -264,6 +234,7 @@
                 $('select').material_select();               
                 });
       </script>    
+       
 
 
 

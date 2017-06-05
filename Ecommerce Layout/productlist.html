@@ -9,7 +9,41 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-       
+       <script>
+        var app = angular.module("myShoppingList", []); 
+        app.controller("myProductCtrl", function($scope,$http) {
+           $scope.xx=[{
+              "price":20,
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "rating": 4,
+              "name":"kuchbi" ,
+              "seller":3 
+            },
+            {
+              "price":21,
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "rating": 3,
+              "name":"Iphone 5s" ,
+              "seller":5
+            },
+            {
+              "price":24,
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "rating": 6,
+              "name":"Iphone 6s black" ,
+              "seller":5 
+            }];
+
+            $http.get('http://localhost:8080/getprod').then(function (response) {
+                $scope.content = response;
+            });
+        });
+
+         app.controller("myCtrl", function($scope,$http) {
+          $scope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
+          });
+          </script>
+
     </head>
 
     <body>
@@ -74,72 +108,33 @@
 
   <br>
   <br>
-<section class="row" style="position :relative;width:100%">
-  <div class="col m8 offset-m3">
-  <div class="row" style="display:inline-block;width:100%;">
-    <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
+<div class="row" style="position :relative;width:100%"   ng-app="myShoppingList">
+<div class="col m2" style="box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);height:450px;">
+<center>
+<ul   ng-controller="myCtrl">
+  <li style="padding:5px;" ng-repeat="x in category">{{x}}</li>
+ 
+</ul>
+</center>
+</div>
+
+
+  <div class="col m8 offset-m1">
+  <div class="row" style="display:inline-block;width:100%;"  ng-controller="myProductCtrl">
+    <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;" ng-repeat="x in xx">
         <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
+          <a href="/product_description/"> <img src="{{x.image}}" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
+          <span style="color:grey;">  <p> {{ x.name }}</p> </span>
+          <span style="color:grey;"><p>&nbsp; &nbsp;{{x.price}}</p></span>
+          <span style="color:grey;"> <p>{{x.rating}}<i class="material-icons">stars</i></p></span></a></center>
     </div>
-                
- <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
-        <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
-    </div>
-    <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
-        <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
-    </div>
-    <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
-        <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
-    </div>
-    <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
-        <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
-    </div>
-    <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
-        <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
-    </div>
-    <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
-        <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
-    </div>
-    <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
-        <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
-    </div>
+ 
     
   </div>
   </div>
   </div>
 
-</section>
+
 
 
   <div style="height:100px">
