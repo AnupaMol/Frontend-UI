@@ -8,10 +8,69 @@
       <link type="text/css" rel="stylesheet" href="css/style.css"/>
 
 
-      <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-  <link rel="stylesheet" href="css/style1.css"> <!-- Resource style -->
-  <script src="js/modernizr.js"></script> <!-- Modernizr -->
-    
+ <!-- Modernizr -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+       <script>
+        var app = angular.module("ShoppingOrder", []); 
+        app.controller("OrderCtrl", function($scope,$http) {
+            
+            $scope.orderitem=[{
+              
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "name":"Iphone 6s 64GB White" ,
+              "seller":"emobile",
+              "quantity":2, 
+              "orderstatus":"Delivered"
+            },
+            {  
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "name":"Iphone 6s 64GB White" ,
+              "seller":"emobile",
+              "quantity":2, 
+              "orderstatus":"Delivered"
+
+            },
+            {
+                
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "name":"Iphone 6s 64GB White" ,
+              "seller":"emobile",
+              "quantity":2, 
+              "orderstatus":"Delivered"
+
+            }];
+            $scope.orders=[{
+              
+              "id":3234,
+              "date":"23/2/2015" ,
+              "total":232323,
+              "totalitems":2, 
+            },
+            {  
+              "id":3234,
+              "date":"23/2/2015" ,
+              "total":232323,
+              "totalitems":2,
+
+            },
+            {
+                
+             "id":3234,
+              "date":"23/2/2015" ,
+              "total":232323,
+              "totalitems":2,
+
+            }];
+            $scope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
+            $scope.IsVisible = false;
+            $scope.ShowHide = function () {
+                $scope.IsVisible = $scope.IsVisible ? false : true;
+            };
+            // $http.get('http://localhost:8080/getprod').then(function (response) {
+            //     $scope.content = response;
+            // });
+        });
+</script>
       <!--Let browser know website is optimized for mobile-->
  
 
@@ -21,24 +80,19 @@
        
     </head>
 
-    <body>
+    <body ng-app="ShoppingOrder" ng-controller="OrderCtrl">
      
-     
-    </head>
-    <body>     
- 
- 
-
+   
 
 
     <div class="navbar-fixed">    
         <nav class="white">
          
             <div class="nav-wrapper">
-              <a href="#" class="brand-logo">Ecommerce</a>  
-              
-                <ul class="hide-on-med-and-down right">   
-                 <li><a class="cd-dropdown-trigger" href="#0"><i class="material-icons">view_list</i></a></li>            
+              <a href="#" class="brand-logo" >Ecommerce</a>  
+               
+                <ul class="right">  
+                <li><a href="#" style="color:black" ng-click="ShowHide()">Category</a></li>           
                     <li>    
                        <div class="center row">
                           <div class="col s12 " >
@@ -89,59 +143,43 @@
 
 
 
-<div class="container" style="margin-top:77px;">
-  <div class="row">
-         <div class="col m4">
-         <h4> My Orders</h4>
-          <p> Nihal Gurjar </p> <!-- user email -->
-          </div>
-    </div>
-                  
-                    <hr>
-                  
-                    <br> 
-
-
 
 
 <!-- for loop -->
-
+			    
     
-    
-      <div class="row">
-                <div class="col m11" style="box-shadow: 0 7px 17px 0 rgba(23,84,116,0.18); height:37em;width:64em;background-color: #bdbdbd; ">
-
-          <!--      
-                  @if(order.status()!=3)         
-      @if(order.status()==2)
-        <p> <b> Delivered</b></p>
-        <p><a class="btn waves-effect" href="/userorders/invoice/{{$order->id}}">Invoice</a></p>
-      @else
-        <p> <b> Processed</b></p>
-        <p><a class="btn waves-effect" href="/userorder/cancel/{{$order->id}}">Cancel order</a></p>
-      @endif
-      @elseif(order.status()==3)
-        <p> <b> Cancelled</b></p>
-       @endif  -->
-
+      <div class="row" style="width:100%;margin-top:66px;">
+      <div class="col m2 sidemenubar" ng-show="IsVisible">
+				<center>
+				<ul >
+				  <a href="#"><li class="sidemenu" ng-repeat="x in category">{{x}}</li></a>
+				 
+				</ul>
+				</center>
+				</div>
+				
+				<div class="col m8 offset-m3">
+				<h5>Orders</h5>
+				<h5>User name : jbvsdgfvghsd </h5>
+				<div class="row">
+                <div class="col m12" style="box-shadow: 0 7px 17px 0 rgba(23,84,116,0.18); height:37em;background-color: #bdbdbd; border:2px solid black" ng-repeat="y in orders">
 
 
-
-                   <p> Order No: 1122</p>
-                 <p>  Placed on  date 2/3/2013 / Rs. 343224/ 3 items</p>
+                   <p> Order No: {{y.id}}</p>
+                 <p>  Placed on  date {{y.date}} / Rs. {{y.total}}/ {{y.totalitems}} items</p>
                  <hr>
-                 <div class="col s12 m6 ">
+                 <div class="col s12 m6" ng-repeat="x in orderitem" >
             		<div class="card horizontal" style="height:200px;">
 		              <div class="card-image">
-		                <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="height:200px;">
+		                <img src="{{x.image}}" style="height:200px;">
 		              </div>
 		              <div class="card-stacked">
 		                <div class="card-content">
-		                  <p>Iphone 6s 64GB White</p>
-		                  <p>Seller : E-mobiles</p>
-		                  <p>Price : 26000</p>
-		                  <p>Quantity : 1 </p>
-		                  <p>Delivered</p>
+		                  <p>{{x.name}}</p>
+		                  <p>Seller : {{x.seller}}</p>
+		                  <p>Price : {{x.price}}</p>
+		                  <p>Quantity : {{x.qty}} </p>
+		                  <p>{{x.orderStatus}}</p>
 		                </div>
 		                <div class="card-action">
 		                  <a href="#">Give Feedback</a>
@@ -150,77 +188,18 @@
 		            </div>
 		          </div>
 
-		          <div class="col s12 m6 ">
-            		<div class="card horizontal" style="height:200px;">
-		              <div class="card-image">
-		                <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="height:200px;">
-		              </div>
-		              <div class="card-stacked">
-		                <div class="card-content">
-		                  <p>Iphone 6s 64GB White</p>
-		                  <p>Seller : E-mobiles</p>
-		                  <p>Price : 26000</p>
-		                  <p>Quantity : 1 </p>
-		                  <p>Delivered</p>
-		                </div>
-		                <div class="card-action">
-		                  <a href="#">Give Feedback</a>
-		                </div>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col s12 m6 ">
-            		<div class="card horizontal" style="height:200px;">
-		              <div class="card-image">
-		                <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="height:200px;">
-		              </div>
-		              <div class="card-stacked">
-		                <div class="card-content">
-		                  <p>Iphone 6s 64GB White</p>
-		                  <p>Seller : E-mobiles</p>
-		                  <p>Price : 26000</p>
-		                  <p>Quantity : 1 </p>
-		                  <p>Delivered</p>
-		                </div>
-		                <div class="card-action">
-		                  <a href="#">Give Feedback</a>
-		                </div>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col s12 m6 ">
-            		<div class="card horizontal" style="height:200px;">
-		              <div class="card-image">
-		                <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" style="height:200px;">
-		              </div>
-		              <div class="card-stacked">
-		                <div class="card-content">
-		                  <p>Iphone 6s 64GB White</p>
-		                  <p>Seller : E-mobiles</p>
-		                  <p>Price : 26000</p>
-		                  <p>Quantity : 1 </p>
-		                  <p>Delivered</p>
-		                </div>
-		                <div class="card-action">
-		                  <a href="#">Give Feedback</a>
-		                </div>
-		              </div>
-		            </div>
-		          </div>
-
-
-
-  
-      
-
-           
+           </div>
+           </div>
         
             </div> 
+
+
+
             </div>   
 
   <!-- @endforeach -->
   
-</div>
+
 
 
 

@@ -30,7 +30,7 @@
             {
               "price":21,
               "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
-              "rating": 3,
+              "rating": 3, 
               "name":"Iphone 5s" ,
               "seller":5
             },
@@ -108,7 +108,7 @@
 <div class="col m2" style="box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);height:450px;">
 <center>
 <ul ng-controller="myCtrl">
-  <li style="padding:5px;" ng-repeat="x in category">{{x}}</li>
+  <a href="#"><li class="sidemenu" ng-repeat="x in category">{{x}}</li></a>
  
 </ul>
 </center>
@@ -164,7 +164,7 @@
          <center> <a href="/product_description/"> <img src="{{x.image}}" class="img-responsive center-align" style="height: 140px; padding-left: 17px;padding-top: 13px;" >
           <span style="color:grey;">  <p> {{x.name}}</p> </span>
           <span style="color:grey;"><p>&nbsp; &nbsp;{{x.price}}</p></span>
-          <span style="color:grey;"> <p>{{x.rating}} <i class="material-icons">stars</i></p></span></a></center>
+          <span style="color:grey;"> <p style="font-size:2px;">{{x.rating}} <i class="material-icons">stars</i></p></span></a></center>
     </div>
                 
   

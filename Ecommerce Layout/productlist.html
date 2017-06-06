@@ -109,25 +109,26 @@
   <br>
   <br>
 <div class="row" style="position :relative;width:100%"   ng-app="myShoppingList">
-<div class="col m2" style="box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);height:450px;">
+<div class="col m2 sidemenubar">
 <center>
 <ul   ng-controller="myCtrl">
-  <li style="padding:5px;" ng-repeat="x in category">{{x}}</li>
+  <a href="#"><li class="sidemenu" ng-repeat="x in category">{{x}}</li></a>
  
 </ul>
 </center>
 </div>
 
 
-  <div class="col m8 offset-m1">
+  <div class="col m8 offset-m3">
   <div class="row" style="display:inline-block;width:100%;"  ng-controller="myProductCtrl">
     <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;" ng-repeat="x in xx">
         <center>
           <a href="/product_description/"> <img src="{{x.image}}" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> {{ x.name }}</p> </span>
-          <span style="color:grey;"><p>&nbsp; &nbsp;{{x.price}}</p></span>
-          <span style="color:grey;"> <p>{{x.rating}}<i class="material-icons">stars</i></p></span></a></center>
+            <p> {{ x.name }}</p> 
+          <p>&nbsp; &nbsp;{{x.price}}</p>
+           <p>{{x.rating}}<i class="material-icons">stars</i></p></a></center>
     </div>
+
  
     
   </div>
@@ -151,7 +152,7 @@
           <footer class="page-footer">
           <div class="container">
             <div class="row">
-              <div class="col l6 s12">
+              <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Ecommerce Logo</h5>
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
               </div>
@@ -167,7 +168,7 @@
             </div>
           </div>
           <div class="footer-copyright">
-            <div class="container">
+            <div class="container" style="margin-left: 20%;">
             © 2017 Copyright Text
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
