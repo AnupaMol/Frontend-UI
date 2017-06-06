@@ -21,9 +21,11 @@
   <html>
     <head>
         <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script type="text/javascript" src='https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js'></script>
         <script>
-            var app = angular.module("ecomm", []);
-            app.controller("prodDesc", function($scope,$http) {
+            var app = angular.module('ecomm', ['ngStorage']);
+            app.controller('prodDesc', ['$scope', '$localStorage', '$http', function($scope, $localStorage, $http) {
+                $scope.qty;
                 $scope.xx=[{
                     "name":"iphone 6s",
                     "price":"$250",
@@ -31,17 +33,63 @@
                     "seller":"seller1",
                     "rating":5,
                     "usp":"",
-                    "desc":["this is a very long line which is not easily readble.",
-                  "so i would like to write it in multiple lines.",
-                  "but, i do NOT require any new lines in the output."],
-                    "attr":""
+                    "desc":["jshiwhciwdhbc,jdnckjdcdjwc.jdbcdbcdbc",
+                  "djhgdjcfgdhcgdhcgvdskhjcgdkyucgdhcvhgcvckyhagvcghcvac",
+                  "hdfgkyvgwuygvuybvuyvbruyvruyfhewucnjhvbfuybvrvyrvbyr"],
+                    "attr":"",
+                    "pid":""
                 }];
-                $http.get('http://localhost:8080/getproddet').then(function (response) {
-                    $scope.content = response;
-                });
-            });
+                
+            $scope.addTocart = function(){
+                
+                for (var i in $scope.xx){
+
+                    $localStorage.setItem('name',i.name);
+                    $localStorage.setItem('pid',i.pid);
+                     $localStorage.setItem('image',i.image);
+                     $localStorage.setItem('price',i.price);
+                    $localStorage.setItem('seller',i.seller);
+                }
+                console.log("Inside cart function");
+                console.log($scope.qty);
+                $localStorage.setItem = ('qty',$scope.qty);
+                console.log("local storage set");
+                $scope.qty = "";                
+                console.log("qty empty");
+                console.log($scope.qty);
+                console.log($localStorage.getItem('name'));
+                alert("item added to cart");
+            };
+                
+                $scope.merchants=[{
+                    "id":1298,
+              "price":20,
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "rating": 4,
+              "name":"kuchbi" ,
+              "seller":"seller3" 
+            },
+            {
+              "price":21,
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "rating": 3,
+              "name":"Iphone 5s" ,
+              "seller":"seller5"
+            },
+            {
+              "price":24,
+              "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",
+              "rating": 6,
+              "name":"Iphone 6s black" ,
+              "seller":"seller4"
+            }];
+//                $http.get('http://localhost:8080/getproduct_description').then(function (response) {
+//                    $scope.content = response;
+//                });
+            }]);
         </script>
         <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
 <!--        <script type="text/javascript" src="/Users/coviam/Desktop/prodDesc/js/prodDescCtrl.js"></script>-->
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -106,69 +154,43 @@
         
     <div class="row" style="width:100%; margin-top:5%"  ng-repeat="x in xx">
             <div class="col s3 m3 offset-m2">
-                <img src="{{x.image}}" width="70%" height="50%" class="myimg"><br/>
-                <select>
+                <img src="{{x.image}}" width="100%" height="100%" ><br/>
+                <select ng-model="qty">
                   <option value="" disabled selected>Quantity</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
                 <p>Stock</p>
-                <button class = "atcart" type = "submit" ng-click = ""> Add to cart </button>
+                <button class="btn waves-effect" style="background-color:#0096d9" ng-click = "addTocart()"> Add to cart </button>
             </div>
             
             <div class="col s5 m5 offset-s2 offset-m2" >
-                <h5>{{x.name}}</h5><br/>
+                <h5>{{x.name}}</h5>
                 Sold by: {{x.seller}}<br/>
-                <h4>{{x.price}}</h4><br/>
-                <p>USP</p>
-                <p>Attributes</p>
-                <p>Product Description</p>{{x.desc.join(" ")}}
-                <p>Reviews and rating by customers<br/>Rating:{{x.rating}}<br/>Review:{{x.review}}</p>
+                <h5>{{x.price}}</h5><br/>
+                <p class="subhead">USP</p> <br/>
+                <p class="subhead">Attributes</p> <br/>
+                <p class="subhead">Product Description</p> {{x.desc.join(" ")}}<br/>
+                <p class="subhead">Reviews and rating by customers</p> Rating:{{x.rating}}<br/>Review:{{x.review}}
             </div>
     </div>
             <section class="row" style="position :relative;width:100%">
                 <center><h5>Other Merchants selling this product</h5></center>
-  <div class="col m8 offset-m3">
+  <div class="col m8 offset-m3" ng-repeat="y in merchants">
   <div class="row" style="display:inline-block;width:100%;">
     
       <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
         <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-        <span style="color:grey;">  <p> Seller2 </p> </span>      
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
-    </div>
-                
-     <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
-        <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-              <span style="color:grey;">  <p> Seller2 </p> </span>      
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
-    </div>
-    <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
-        <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-              <span style="color:grey;">  <p> Seller2 </p> </span>      
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
-    </div>
-    <div class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;">
-        <center>
-          <a href="/product_description/{{ book.id }}"> <img src="img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> Iphone 6s</p> </span>
-              <span style="color:grey;">  <p> Seller2 </p> </span>      
-          <span style="color:grey;"><p>&nbsp; &nbsp;36600</p></span>
-          <span style="color:grey;"> <p>4 <i class="material-icons">stars</i></p></span></a></center>
+          <a href="/product_description/{{ y.id }}"> <img src="{{y.image}}" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
+          <span style="color:grey;">  <p> {{y.name}} </p> </span>
+        <span style="color:grey;">  <p> {{y.seller}} </p> </span>      
+          <span style="color:grey;"><p>${{y.price}}</p></span>
+          <span style="color:grey;"> <p>{{y.rating}} <i class="material-icons">stars</i></p></span></a></center>
     </div>
     
   </div>
   </div>
-
 </section>
 
 
